@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   
+    <title>Display First Element</title>
+  </head>
+  <body>
+      <div id="root"></div>
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script crossorigin src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
+
+    <script type="text/babel">
+        const rootHandle = document.querySelector("#root")
+
+/*
+    1. Create a component called as TasksList
+    2. You are provided with an array of tasks
+    3. Pass the full tasks array as a prop to the component
+    4. The component renders a button
+    5. When a user clicks on the button "first task", display the first task in the array
+    6. The event handler function needs to be declared inside the component
+*/
+
+    const tasks = [
+            { id: 1, title: 'Task 1', isCompleted: true },
+            { id: 2, title: 'Task 2', isCompleted: true },
+            { id: 3, title: 'Task 3', isCompleted: false }
+        ]
+
+        const TasksList = (props) => {
+            //console.log(props.tasks)
+
+            const handleClick = (firstTask) => {
+               {firstTask.map((task) => {
+                alert(task.title)
+               })}
+            }
+
+            //const firstTask = props.tasks.shift()
+            const firstTask = props.tasks.slice(0, 1)
+           // console.log(firstTask) 
+            return <button type="button" onClick={() => {handleClick(firstTask)}}>First Tasks</button>
+        }
+
+        const ele = <TasksList tasks={tasks} /> 
+
+        ReactDOM.render(ele, rootHandle);
+    </script>
+  </body>
+</html>
+</html>

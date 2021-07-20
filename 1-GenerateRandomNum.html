@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Generate Random Number</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script crossorigin src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
+
+
+    <script type="text/babel">
+/* 
+  1. Create a component called as Generate Random
+  2. The component renders a button
+  3. when a user clicks on the button, generate a random number and display to the user using the alert() method
+  4. the event handler function needs to declared inside the component
+*/
+        const rootHandle = document.querySelector("#root")
+
+          const GenerateRandom = () => {
+            function handleClick(){
+              alert(Math.floor(Math.random() * 100))
+            }
+            return <button type="button" onClick={handleClick}>Generate</button>
+          }
+          
+        const ele = <GenerateRandom />
+
+      ReactDOM.render(ele, rootHandle);
+    </script>
+  </body>
+</html>
+</html>

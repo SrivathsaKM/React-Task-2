@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Display Index</title>
+  </head>
+  <body>
+      <div id="root"></div>
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script crossorigin src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
+
+    <script type="text/babel">
+/*
+    1. Create a component called as DisplayIndex
+    2. You are provided with an array of tasks, which you need to pass as props to the component
+    3. The component renders a list of task items
+    4. When a user clicks on any task, display the index in which the task is found within the array
+*/
+          const tasks = [
+          { id: 1, title: 'Task 1', isCompleted: true },
+          { id: 2, title: 'Task 2', isCompleted: true },
+          { id: 3, title: 'Task 3', isCompleted: false }
+        ]
+
+        const rootHandle = document.querySelector("#root")
+
+        const DisplayIndex = (props) => {
+
+            const handleClick = (idx) => {
+                alert(`You clicked on the task present at ${idx} index`)
+            }
+
+            return (
+                <div style={{margin: "2em"}}>
+                    <ul>
+                        {props.tasks.map((task,idx) => {
+                            const{id, title, isCompleted} = task
+                            return <li key={idx} onClick={() => {handleClick(idx)}}>{title}</li>
+                        })}
+                    </ul>
+                </div>
+            )
+        }
+        
+        const ele = <DisplayIndex tasks={tasks} />
+        ReactDOM.render(ele, rootHandle);
+    </script>
+  </body>
+</html>
+</html>

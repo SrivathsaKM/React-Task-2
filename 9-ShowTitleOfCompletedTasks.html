@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Show Titles Of Completed Task</title>
+  </head>
+  <body>
+      <div id="root"></div>
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script crossorigin src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
+
+    <script type="text/babel">
+        const rootHandle = document.querySelector("#root")
+/*
+    1. Create a component called as CompletedTasks
+    2. You are provided with an array of tasks, pass them as props to the component
+    3. The component renders a button " Show Completed Tasks "
+    4. Once the user clicks on the button, then display only the completed tasks title comma separated
+*/
+        const tasks = [
+            { id: 1, title: 'Task 1', isCompleted: true },
+            { id: 2, title: 'Task 2', isCompleted: true },
+            { id: 3, title: 'Task 3', isCompleted: false },
+            { id: 4, title: 'Task 4', isCompleted: false },
+            { id: 5, title: 'Task 5', isCompleted: true }
+        ]
+        const CompletedTasks  = (props) => {
+            
+            const handleClick = () => {
+              const filteredData = props.tasks.filter((task) => {
+                    return task.isCompleted;
+                })
+                
+             const result = filteredData.map((completedTask) => {
+                   return completedTask.title;
+                })
+              return alert(result.join(", "))
+            }
+            
+            return <button type="button" onClick={handleClick}>Show Completed Taks </button>
+        }
+       
+        const ele = <CompletedTasks tasks={tasks}/>
+        ReactDOM.render(ele, rootHandle);
+    </script>
+  </body>
+</html>
+</html>

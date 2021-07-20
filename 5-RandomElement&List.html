@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   
+    <title>Random Element & List</title>
+  </head>
+  <body>
+      <div id="root"></div>
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script crossorigin src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
+
+    <script type="text/babel">
+        const rootHandle = document.querySelector("#root")
+/*
+   1. Create a component called as RandomElement
+   2. You are provided with an array of fruits which you will pass as props to the component
+   3. The component renders a button " Pick random " and all the fruits as a list
+   4. When the user clicks on the button, pick a random element from the array and display using the alert() method
+   5. The event handler function needs to be declared inside the component
+*/
+        const fruits = ['apple', 'water melon', 'strawberry', 'kiwi']
+
+        const RandomElement = (props) => {
+            //console.log(props.fruits)
+
+            const handleClick= () => {
+                alert(props.fruits[(Math.floor(Math.random()*props.fruits.length))])
+            }
+
+            return (
+                <div>
+                    <button type="button" onClick={handleClick}>Pick Random</button>
+                    {props.fruits.map((fruit, idx) => {
+                        return <li key={idx}>{fruit}</li>
+                    })} 
+                </div>
+            )
+        }
+        const ele = <RandomElement fruits={fruits} /> 
+
+        ReactDOM.render(ele, rootHandle);
+    </script>
+  </body>
+</html>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Find By ID</title>
+  </head>
+  <body>
+      <div id="root"></div>
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script crossorigin src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
+
+    <script type="text/babel">
+/*
+    1. Create a component FindElement
+    2. You are provided with an array of tasks
+    3. Pass this data to the component via a prop called as data
+    4. The component renders a button "Find Record by ID"
+    5. Take the id as an input using the prompt() method
+    6. If the element is found, then display the title and its completion status, else display task with id not found
+*/
+        const rootHandle = document.querySelector("#root")
+
+        const tasks = [
+            { id: 1, title: 'Task 1', isCompleted: true },
+            { id: 2, title: 'Task 2', isCompleted: true },
+            { id: 3, title: 'Task 3', isCompleted: false }
+        ]
+
+        const FindElement = (props) => {
+
+            const handleClick = () => {
+                const id = prompt("Enter Id")
+                const result = props.data.find((task) => {
+                     return task.id == id
+                })
+                if(result){
+                    alert(`${result.title} - ${result.isCompleted}`)
+                } else {
+                    alert(`task with id-${id} not found`)
+                }
+            }
+            return <button type="button" onClick={handleClick}>Find Record by ID</button>
+        }
+
+       const ele = <FindElement data={tasks} />
+        ReactDOM.render(ele, rootHandle);
+    </script>
+  </body>
+</html>
+</html>
